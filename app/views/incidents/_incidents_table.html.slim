@@ -1,0 +1,85 @@
+.ui.header.huge.center.aligned = t(title)
+
+- if defined? incidents.total_pages
+  .ui.segment.padded.center.aligned
+    .ui.statistic class="#{(title.include?('active') ? 'red' : 'green')}"
+      .label = t(title + '_count')
+
+      .value
+        i.icon.line.chart
+        | &nbsp;
+        = incidents.total_count
+
+table.ui.celled.table
+  thead
+    tr.center.aligned
+      th.collapsing = sort_link(@q, :identificator, Incident.human_attribute_name(:identificator))
+      th.collapsing = sort_link(@q, :source, Incident.human_attribute_name(:source))
+      th = sort_link(@q, :organisation_id, Incident.human_attribute_name(:organisation_id))
+
+      th.collapsing
+        - if (action_name == 'closed_incidents')
+          = sort_link(@q, :date_close, Incident.human_attribute_name(:date_close))
+        - else
+          = sort_link(@q, :date_receive, Incident.human_attribute_name(:date_receive))
+
+      th = t('last_event')
+      th.collapsing = t('infected_machine')
+      th.collapsing = sort_link(@q, :user_id, Incident.human_attribute_name(:user_id))
+      th.collapsing
+
+  tbody.center.aligned
+    - incidents.each do |incident|
+      tr
+        td = incident.identificator
+
+        td = incident.source
+
+        td = link_to incident.organisation.name, incident.organisation, class: 'ui small basic button bold'
+
+        td
+          i.calendar.icon
+          = (action_name == 'closed_incidents') ? dt(incident.date_close) : dt(incident.date_receive)
+
+        td
+          - last_event = incident.events.last
+
+          - if last_event.present?
+            .ui.card.fluid.left.aligned
+              .content
+                .description.justify = simple_format(last_event.description)
+
+              .extra.content
+                span.right.floated
+                  i.icon.calendar
+                  = dt(last_event.date_event)
+
+                span
+                  i.icon.user
+                  = last_event.user.short_name
+
+          - else
+            = t('no_events')
+
+        td
+          i.laptop.icon
+          = incident.infected_machines.count
+
+        td = link_to incident.user.short_name, user_path(incident.user), class: 'ui blue label'
+
+        td
+          .ui.vertical.basic.icon.buttons
+            = link_to incident_path(incident), title: t('show'), class: 'ui button' do
+              i.icon.search
+
+            = link_to edit_incident_path(incident), title: t('edit'), class: 'ui button' do
+              i.icon.edit
+
+            = link_to incident_path(incident, format: 'pdf'), title: t('generate_pdf'), class: 'ui button' do
+              i.icon.file.pdf.outline
+
+  - if defined? incidents.total_pages
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate incidents
+br

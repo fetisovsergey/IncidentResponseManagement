@@ -1,0 +1,24 @@
+en:
+  activerecord:
+    models:
+      document: "Departure"
+    attributes:
+      document:
+        date_signature: "Date of signature"
+        description: "Description"
+        incident_id: "Incident"
+        number: "Number of document"
+        destination: "Destination of information"
+        user_id: "User"
+    errors:
+      models:
+        document:
+          attributes:
+            date_signature:
+              not_in_the_past: "couldn't be earlier than date of receiving information"
+    simple_form:
+      placeholders:
+        document:
+          description: "Enter description of document"
+          number: "Enter number"
+          destination: "Enter destination of information"

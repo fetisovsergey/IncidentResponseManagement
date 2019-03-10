@@ -1,0 +1,5 @@
+- if @incidents.present?
+  = render partial: 'incidents/incidents_table', locals: { incidents: @incidents, title: 'active_incidents' }
+- else
+  .ui.header.huge.centered = t('no_active_incidents')
+  br

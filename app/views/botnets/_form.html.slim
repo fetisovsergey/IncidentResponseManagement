@@ -1,0 +1,11 @@
+= simple_form_for(@botnet, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @botnet, ff: f}
+
+  .field = f.input :name, placeholder: t('simple_form.placeholders.botnet.name')
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.botnet.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

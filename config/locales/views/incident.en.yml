@@ -1,0 +1,16 @@
+en:
+  incidents:
+    edit:
+      edit_incident: "Edit incident"
+    active_incidents:
+      new_incident: "Add new incident"
+    show:
+      close_incident: "Close incident"
+      delete_event: "Do you want to delete event?"
+      edit_incident: "Edit incident"
+      new_departure: "Add departure"
+      new_document: "Add prepared document"
+      new_event: "Add event"
+      new_infected_machine: "Add infected machine"
+      new_relationship: "Add relationship with C&C-server"
+      open_incident: "Open incident"

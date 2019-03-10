@@ -1,0 +1,44 @@
+.ui.header.center.aligned = link_to "#{t('activerecord.models.incident').mb_chars.upcase} № #{incident.identificator}/#{incident.source}", incident, class: 'link_custom'
+
+table.ui.celled.table
+  thead
+    tr
+      th = t('activerecord.models.object')
+      th = link_to incident.organisation.name, incident.organisation, class: 'link_custom'
+
+  tbody
+    tr
+      td = t('activerecord.attributes.incident.state')
+      td
+        = t incident.state, scope: [:simple_form, :options, :incident, :state]
+
+        - if incident.closed?
+          | &emsp;
+          i.icon.calendar
+          = dt(incident.date_close)
+
+    tr
+      td = t('activerecord.attributes.incident.date_incident')
+      td
+        i.icon.calendar
+        = dt(incident.date_incident)
+
+    tr
+      td
+        | #{t('activerecord.attributes.incident.source')}, #{t('activerecord.attributes.incident.date_receive').mb_chars.downcase}
+      td
+        | #{incident.source},&emsp;
+        i.icon.calendar
+        = dt(incident.date_receive)
+
+    tr
+      td = t('activerecord.attributes.incident.description')
+      td.justify = simple_format(incident.description)
+
+    tr
+      td = t('activerecord.attributes.incident.current_state')
+      td.justify = simple_format(incident.current_state)
+
+    tr
+      td = t('activerecord.attributes.organisation.handler')
+      td = incident.organisation.handler

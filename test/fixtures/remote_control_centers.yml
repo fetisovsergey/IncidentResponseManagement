@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  botnet_id: 1
+  ip: 
+  domain: MyString
+  country: MyString
+  description: MyText
+
+two:
+  botnet_id: 1
+  ip: 
+  domain: MyString
+  country: MyString
+  description: MyText

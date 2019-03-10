@@ -1,0 +1,63 @@
+.ui.large.top.menu.fixed
+  .ui.container
+    .ui.item = link_to image_tag('icon_new.png'), root_path, class: 'ui image tiny'
+
+    .ui.simple.dropdown.item
+      = t('incidents_on_control')
+      i.dropdown.icon
+      .menu
+        = link_to t('active_incidents'), active_incidents_path, class: 'ui item'
+        = link_to t('closed_incidents'), closed_incidents_path, class: 'ui item'
+        = link_to t('documents_on_control'), documents_path, class: 'ui item'
+        = link_to t('departures_on_control'), departures_path, class: 'ui item'
+        = link_to t('organisations_on_control'), organisations_path, class: 'ui item'
+
+    .ui.simple.dropdown.item
+      = t('scr')
+      i.dropdown.icon
+      .menu
+        = link_to t('botnets_on_control'), botnets_path, class: 'ui item'
+        = link_to t('remote_control_centers_on_control'), remote_control_centers_path, class: 'ui item'
+        = link_to t('infected_machines_on_control'), infected_machines_path, class: 'ui item'
+
+    .ui.simple.dropdown.item
+      = t('svodka')
+      i.dropdown.icon
+      .menu
+        = link_to t('statistic'), statistic_path, class: 'ui item'
+        = link_to t('incident_analytics'), incident_analytics_path, class: 'ui item'
+        = link_to t('analytics'), analytics_path, class: 'ui item'
+
+    .right.menu
+      .item
+        .ui.icon.menu
+          = link_to users_path, title: t('users_svodka'), class: 'item' do
+            i.icon.users
+
+          = link_to new_organisation_path, title: t('new_organisation'), class: 'item' do
+            i.icon.building
+
+          = link_to new_incident_path, title: t('new_incident'), class: 'item' do
+            i.icon.bug
+
+          = link_to new_botnet_path, title: t('new_botnet'), class: 'item' do
+              i.icon.cubes
+
+          = link_to new_remote_control_center_path, title: t('new_remote_control_center'), class: 'item' do
+            i.icon.cube
+
+      - if signed_in?
+        .item
+          .ui.menu
+            = link_to current_user, class: 'item' do
+              i.icon.user
+              = current_user.email
+
+          .ui.label.red.circular = current_user.incidents.active.count
+
+        .item
+          = link_to t('sign_out'), destroy_user_session_path, method: :delete, class: 'ui red basic button'
+      - else
+
+        .item
+          = link_to t('log_in'), new_user_session_path, class: 'ui blue basic button'

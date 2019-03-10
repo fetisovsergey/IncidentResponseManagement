@@ -1,0 +1,48 @@
+.ui.header.huge.center.aligned = t('botnets_on_control')
+
+.ui.segment.padded.center.aligned
+  .ui.red.statistic
+    .label = t('.botnets_count')
+
+    .value
+      i.icon.line.cubes
+      | &nbsp;
+      = @botnets.total_count
+
+= render 'shared/form_search'
+
+- if @botnets.present?
+  table.ui.celled.table
+    thead
+      tr.center.aligned
+        th = sort_link(@q, :name, Botnet.human_attribute_name(:name))
+        th = t('remote_control_centers_count')
+        th = t('infected_machines_count')
+        th.collapsing
+
+    tbody.center.aligned
+      - @botnets.each do |botnet|
+        tr.center.aligned
+          td = botnet.name
+          td = botnet.remote_control_centers.count
+          td = botnet.infected_machines.count
+
+          td
+            .ui.basic.icon.buttons
+              = link_to botnet_path(botnet), title: t('show'), class: 'ui button' do
+                i.icon.search
+
+              = link_to edit_botnet_path(botnet), title: t('edit'), class: 'ui button' do
+                i.icon.edit
+
+              = link_to botnet, data: { confirm: t('.delete_botnet') }, method: :delete, title: t('delete'), class: 'ui button' do
+                i.icon.remove
+
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate @botnets
+
+- else
+  .ui.header.huge.centered = t('.no_botnets')
+
+.ui.segment.basic.center.aligned = link_to t('new_botnet'), new_botnet_path, class: 'ui big red button'

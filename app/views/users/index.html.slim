@@ -1,0 +1,39 @@
+.ui.header.huge.center.aligned = t('users_svodka')
+
+.ui.two.cards.stackable
+
+  - @users.each do |user|
+    = link_to user_path(user), class: 'ui card' do
+      .content
+        .header = user.full_name
+        .meta
+          span.category = user.email
+
+      .content
+        .description
+          .ui.list.middle.aligned.divided.large
+            .item
+              .right.floated
+                .content
+                  .ui.red.circular.label = user.incidents.active.count
+
+              i.icon.line.chart
+              .content = t('active_incidents')
+
+            .item
+              .right.floated
+                .content
+                  .ui.green.circular.label = user.incidents.closed.count
+
+              i.icon.line.chart
+              .content = t('closed_incidents')
+
+
+            .item
+              .right.floated
+                .content
+                  .ui.violet.circular.label = user.departures.count
+
+              i.icon.car
+              .content = t('departures_on_control')
+br

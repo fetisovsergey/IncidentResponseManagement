@@ -1,0 +1,55 @@
+table.ui.celled.table
+  thead
+    tr.center.aligned
+      th = params[:country].blank? ? sort_link(@q, :identificator, t('activerecord.models.incident')) : t('activerecord.models.incident')
+
+      th.collapsing = params[:country].blank? ? sort_link(@q, :date_close, Incident.human_attribute_name(:date_close)) : t('activerecord.attributes.incident.date_close')
+
+      th = params[:country].blank? ? sort_link(@q, :organisation_id, Incident.human_attribute_name(:organisation_id)) : t('activerecord.attributes.incident.organisation_id')
+
+      th = t('infected_machine')
+
+      th.one.wide = t('activerecord.models.departure')
+
+      th = t('activerecord.models.botnet')
+
+      th = t('activerecord.models.remote_control_center')
+
+  tbody.center.aligned
+
+    - incidents.each do |incident|
+      - remote_control_centers = incident.remote_control_centers_compact
+
+      tr class="#{(params[:include_country] == 'on' && params[:country].present? && remote_control_centers.to_s.include?(params[:country])) ? 'positive' : ''}"
+
+        td = link_to "№ #{incident.identificator}/#{incident.source}", incident, class: 'ui basic button', target: '_blank'
+
+        td
+          i.icon.calendar
+          = dt(incident.date_close)
+
+        td = link_to incident.organisation.name, incident.organisation, class: 'ui basic button bold', target: '_blank'
+
+        td
+          i.icon.laptop
+          = incident.infected_machines.count
+
+        td
+          - if incident.departures.count != 0
+            i.large.green.checkmark.icon
+
+        td
+          .ui.buttons.vertical.basic
+            - incident.botnets.each do |botnet|
+              = link_to botnet.name, botnet, class: 'ui button', target: '_blank'
+
+        td
+          .ui.buttons.vertical.basic
+            - remote_control_centers.each do |remote_control_center|
+              = link_to "#{remote_control_center.ip} (#{remote_control_center.country})", remote_control_center, class: 'ui button', target: '_blank'
+
+  - if params[:country].blank?
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate incidents
+br

@@ -1,0 +1,8 @@
+- if object.errors.any?
+  .ui.negative.message
+    i.close.icon
+    .header = ff.error_notification
+
+    ul.list
+      - object.errors.full_messages.each do |message|
+        li = message

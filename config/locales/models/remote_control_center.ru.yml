@@ -1,0 +1,33 @@
+ru:
+  activerecord:
+    models:
+      remote_control_center: "C&C"
+    attributes:
+      remote_control_center:
+        botnet_id: "Ботсеть"
+        country: "Страна"
+        description: "Описание"
+        domain: "Домен"
+        ip: "IP-адрес"
+        name: "Идентификатор"
+    errors:
+      models:
+        remote_control_center:
+          attributes:
+            ip:
+              blank: "не задан"
+              invalid_ipaddr: "имеет неправильный формат"
+            country:
+              undetected: "не определена по IP-адресу"
+            domain:
+              blank: "не задан"
+  simple_form:
+    prompts:
+      remote_control_center:
+        botnet_id: "Выберите ботсеть:"
+    placeholders:
+      remote_control_center:
+        description: "Введите описание C&C"
+        domain: "Введите домен"
+        ip: "Введите IP-адрес"
+        name: "Введите идентификатор"

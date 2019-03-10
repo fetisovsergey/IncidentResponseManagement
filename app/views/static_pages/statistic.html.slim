@@ -1,0 +1,124 @@
+.ui.header.center.aligned
+  i.icon.calendar
+  = to_date(Time.now)
+
+.ui.four.column.grid.stackable.center.aligned
+
+  .column
+    .ui.small.green.statistic
+      .label
+        = t('closed_incidents')
+
+      .value
+        i.icon.line.chart
+        | &nbsp;
+        = @closed_incidents_count
+
+  .column
+    .ui.small.red.statistic
+      .label
+        = t('active_incidents')
+
+      .value
+        i.icon.line.chart
+        | &nbsp;
+        = @active_incidents_count
+
+  .column
+    .ui.small.violet.statistic
+      .label
+        = t('departures_on_control')
+
+      .value
+        i.icon.car
+        | &nbsp;
+        = @departures_count
+
+  .column
+    .ui.small.teal.statistic
+      .label
+        = t('documents_on_control')
+
+      .value
+        i.icon.file.text.outline
+        | &nbsp;
+        = @documents_count
+
+br
+.ui.divider
+
+.ui.header.huge.center.aligned = t('.statistic_for_period')
+
+= render 'shared/form_statistic'
+
+br
+
+.ui.four.column.grid.stackable.center.aligned
+
+  .column
+    .ui.small.green.statistic
+      .label
+        = t('closed_incidents')
+        br
+        | (#{to_date(params[:date_start])} - #{to_date(params[:date_finish])})
+
+      .value
+        i.icon.line.chart
+        | &nbsp;
+        = @closed_incidents.count
+
+  .column
+    .ui.small.red.statistic
+      .label
+        = t('active_incidents')
+        br
+        | (#{to_date(params[:date_finish])})
+
+      .value
+        i.icon.line.chart
+        | &nbsp;
+        = @active_incidents.count
+
+  .column
+    .ui.small.violet.statistic
+      .label
+        = t('departures_on_control')
+        br
+        | (#{to_date(params[:date_start])} - #{to_date(params[:date_finish])})
+
+      .value
+        i.icon.car
+        | &nbsp;
+        = @departures_at_time.count
+
+  .column
+    .ui.small.teal.statistic
+      .label
+        = t('documents_on_control')
+        br
+        | (#{to_date(params[:date_start])} - #{to_date(params[:date_finish])})
+
+      .value
+        i.icon.file.text.outline
+        | &nbsp;
+        = @documents_at_time.count
+
+br
+.ui.divider
+br
+
+- if @closed_incidents.present?
+  = render partial: 'incidents/incidents_table_closed', locals: { incidents: @closed_incidents }
+  .ui.divider
+- else
+  .ui.header.centered = t('no_closed_incidents')
+  br
+
+
+- if @active_incidents.present?
+  = render partial: 'incidents/incidents_table_without_pagination', locals: { incidents: @active_incidents }
+- else
+  .ui.header.centered = t('no_active_incidents')
+  br
+
+br

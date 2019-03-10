@@ -1,0 +1,40 @@
+table
+  thead
+    tr.centered
+      th = t('activerecord.models.incident')
+
+      th = t('activerecord.attributes.incident.date_close')
+
+      th = t('activerecord.attributes.incident.organisation_id')
+
+      th = t('infected_machine')
+
+      th = t('activerecord.models.departure')
+
+      th = t('activerecord.models.botnet')
+
+      th = t('activerecord.models.remote_control_center')
+
+    tbody
+      - incidents.each do |incident|
+        - remote_control_centers = incident.remote_control_centers_compact
+
+        tr.centered
+          td = "№ #{incident.identificator}/#{incident.source}"
+          td = dt(incident.date_close)
+          td = incident.organisation.name
+          td = incident.infected_machines.count
+
+          td
+            - if incident.departures.count != 0
+              | +
+
+          td
+            - incident.botnets.each do |botnet|
+              = botnet.name
+              br
+
+          td
+            - remote_control_centers.each do |remote_control_center|
+              | #{remote_control_center.ip} (#{remote_control_center.country})
+              br

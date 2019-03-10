@@ -1,0 +1,10 @@
+.ui.segment
+  = form_tag({controller: controller_name, action: action_name}, method: "get", class: "ui form") do
+    .field
+      = label_tag :search, t('search')
+      = text_field_tag :search, params[:search], placeholder: t('enter_keyword')
+
+    .ui.buttons
+      button.ui.button.blue.basic type="submit" = t('search')
+      - if params[:search].present?
+        = link_to t('back'), :back, class: 'ui red button basic'

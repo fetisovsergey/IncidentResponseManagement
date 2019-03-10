@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      event: "Событие"
+    attributes:
+      event:
+        date_event: "Дата события"
+        description: "Описание"
+    errors:
+      models:
+        event:
+          attributes:
+            date_event:
+              not_in_the_past: "не может быть раньше даты получения материалов"
+  simple_form:
+    placeholders:
+      event:
+        description: "Введите описание события"

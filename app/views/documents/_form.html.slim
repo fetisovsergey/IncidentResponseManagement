@@ -1,0 +1,20 @@
+= simple_form_for(@document, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @document, ff: f}
+
+  = f.hidden_field :user_id, value: current_user.id
+
+  = f.hidden_field :incident_id
+
+  .field = f.input :number, placeholder: t('simple_form.placeholders.document.number')
+
+  .field
+    .ui.calendar.datepicker = f.input :date_signature, placeholder: t('activerecord.attributes.document.date_signature'),  as: :string
+
+  .field = f.input :destination, placeholder: t('simple_form.placeholders.document.destination')
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.document.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

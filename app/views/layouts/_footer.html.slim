@@ -1,0 +1,42 @@
+.ui.inverted.vertical.footer.segment
+  .ui.container
+    .ui.stackable.inverted.equal.height.stackable.grid
+      .four.wide.column
+        h4.ui.inverted.header = t('incidents_on_control')
+
+        .ui.inverted.link.list
+          = link_to t('active_incidents'), active_incidents_path, class: 'item'
+          = link_to t('closed_incidents'), closed_incidents_path, class: 'item'
+          = link_to t('documents_on_control'), documents_path, class: 'item'
+          = link_to t('departures_on_control'), departures_path, class: 'item'
+          = link_to t('organisations_on_control'), organisations_path, class: 'item'
+
+      .four.wide.column
+        h4.ui.inverted.header = t('scr')
+
+        .ui.inverted.link.list
+          = link_to t('botnets_on_control'), botnets_path, class: 'item'
+          = link_to t('remote_control_centers_on_control'), remote_control_centers_path, class: 'item'
+          = link_to t('infected_machines_on_control'), infected_machines_path, class: 'item'
+
+      .four.wide.column
+        h4.ui.inverted.header = t('svodka')
+
+        .ui.inverted.link.list
+          = link_to t('statistic'), statistic_path, class: 'item'
+          = link_to t('analytics'), analytics_path, class: 'item'
+
+      .four.wide.column
+        h4.ui.inverted.header = t('export')
+
+        .ui.inverted.link.list
+          = link_to t('export_db_json'), export_json_path, class: 'item'
+          = link_to t('export_db_seeds'), export_seeds_path, class: 'item'
+
+.ui.vertical.inverted.footer.segment.center.aligned
+
+  .ui.red.label
+    i.icon.copyright
+    | Svodka#{Time.now.year}
+
+  | &emsp;Sergey Fetisov

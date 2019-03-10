@@ -1,0 +1,106 @@
+h3.centered
+  | #{t('activerecord.models.incident').mb_chars.upcase} № #{@incident.identificator}/#{@incident.source}
+
+h4.righted
+  u = "#{t('activerecord.attributes.incident.own')}. #{@incident.user.short_name}"
+
+table
+  thead
+    tr
+      th.lefted = t('activerecord.models.object')
+      th = @incident.organisation.name
+
+  tbody
+    tr
+      td
+        b = t('activerecord.attributes.incident.state')
+
+      td
+        = t @incident.state, scope: [:simple_form, :options, :incident, :state]
+
+        - if @incident.closed?
+          | ,&nbsp;
+          = dt(@incident.date_close)
+    tr
+      td
+        b = t('activerecord.attributes.incident.date_incident')
+
+      td = dt(@incident.date_incident)
+
+    tr
+      td
+        b = "#{t('activerecord.attributes.incident.source')}, #{t('activerecord.attributes.incident.date_receive').mb_chars.downcase}"
+
+      td
+        | #{@incident.source},&nbsp;
+        = dt(@incident.date_receive)
+
+    tr
+      td
+        b = t('activerecord.attributes.incident.description')
+
+      td.justify = simple_format(@incident.description)
+
+    tr
+      td
+        b = t('activerecord.attributes.organisation.contact_security')
+
+      td = @incident.organisation.contact_security
+
+    tr
+      td
+        b = t('activerecord.attributes.organisation.contact_tech')
+
+      td = @incident.organisation.contact_tech
+
+    tr
+      td
+        b = t('activerecord.attributes.incident.current_state')
+
+      td.justify = simple_format(@incident.current_state)
+
+    tr
+      td
+        b = t('activerecord.attributes.organisation.handler')
+
+      td = @incident.organisation.handler
+
+    tr
+      td
+        b = t('infected_machines_count')
+
+      td = @incident.infected_machines.count
+
+    tr
+      td
+        b = t('departures_on_control')
+
+      td = @incident.departures.count
+
+    tr
+      td
+        b = t('documents_on_control')
+
+      td
+        - @documents.each do |document|
+          | № #{document.number} от #{dt(document.date_signature)} - в #{document.destination}
+          br
+
+br
+
+- if @events.present?
+
+  h4.centered = t('chronology')
+
+  table
+    thead
+      tr
+        th = t('activerecord.attributes.event.date_event')
+        th = t('activerecord.models.event')
+
+    tbody
+      - @events.each do |event|
+        tr
+          td.centered = dt(event.date_event)
+          td.justify = simple_format(event.description)
+br

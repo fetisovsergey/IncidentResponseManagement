@@ -1,0 +1,77 @@
+.ui.header.huge.center.aligned = t('remote_control_centers_on_control')
+
+.ui.segment.padded
+  .ui.two.column.grid.stackable.center.aligned
+
+    .column
+      .ui.red.statistic
+        .label = t('.remote_control_centers_count')
+
+        .value
+          i.icon.line.cube
+          | &nbsp;
+          = @remote_control_centers.total_count
+
+    .column
+      .ui.blue.statistic
+        .label = t('.countries_count')
+
+        a#show_countries.value href="#"
+          i.icon.map.outline
+          | &nbsp;
+          = @countries.count
+
+.ui.tiny.modal
+  i.close.icon
+  .header = t('.countries')
+  .scrolling.content
+    ul.ui.list
+      - @countries.each do |country|
+        li = country
+
+= render 'shared/form_search'
+
+- if @remote_control_centers.present?
+  table.ui.celled.table
+    thead
+      tr.center.aligned
+        th.collapsing = sort_link(@q, :botnet_id, RemoteControlCenter.human_attribute_name(:botnet_id))
+        th = sort_link(@q, :name, RemoteControlCenter.human_attribute_name(:name))
+        th = sort_link(@q, :ip, RemoteControlCenter.human_attribute_name(:ip))
+        th = sort_link(@q, :domain, RemoteControlCenter.human_attribute_name(:domain))
+        th = sort_link(@q, :country, RemoteControlCenter.human_attribute_name(:country))
+        th.collapsing
+
+    tbody.center.aligned
+      - @remote_control_centers.each do |remote_control_center|
+        tr
+          td = link_to remote_control_center.botnet.name, remote_control_center.botnet, class: 'ui basic button'
+          td = remote_control_center.name
+          td = remote_control_center.ip
+          td = remote_control_center.domain
+          td
+            - country_name = remote_control_center.country
+
+            - if country_name
+              i.icon.flag
+              = country_name
+
+          td.center.aligned
+            .ui.basic.icon.buttons
+              = link_to remote_control_center_path(remote_control_center), title: t('show'), class: 'ui button' do
+                i.icon.search
+
+              = link_to edit_remote_control_center_path(remote_control_center), title: t('edit'), class: 'ui button' do
+                i.icon.edit
+
+              = link_to remote_control_center, data: { confirm: t('delete_remote_control_center') }, method: :delete, title: t('delete'), class: 'ui button' do
+                i.icon.remove
+
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate @remote_control_centers
+
+- else
+  .ui.header.huge.centered = t('no_remote_control_centers')
+
+.ui.segment.basic.center.aligned = link_to t('new_remote_control_center'), new_remote_control_center_path, class: 'ui big red button'

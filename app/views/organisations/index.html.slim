@@ -1,0 +1,50 @@
+.ui.header.large.center.aligned = t('organisations_on_control')
+
+.ui.segment.padded.center.aligned
+  .ui.orange.statistic
+    .label = t('organisations_count')
+
+    .value
+      i.icon.building
+      | &nbsp;
+      = @organisations.total_count
+
+
+= render 'shared/form_search'
+
+- if @organisations.present?
+
+  table.ui.celled.table
+    thead
+      tr.center.aligned
+        th = sort_link(@q, :name, Organisation.human_attribute_name(:name))
+        th.collapsing = sort_link(@q, :region, Organisation.human_attribute_name(:region))
+        th = sort_link(@q, :ip, Organisation.human_attribute_name(:ip))
+        th= sort_link(@q, :handler, Organisation.human_attribute_name(:handler))
+        th.collapsing
+
+    tbody.center.aligned
+      - @organisations.each do |organisation|
+        tr.center.aligned
+          td = organisation.name
+          td = organisation.region
+          td = organisation.ip
+          td = organisation.handler
+
+          td
+            .ui.basic.icon.buttons
+              = link_to organisation_path(organisation), title: t('show'), class: 'ui button' do
+                i.icon.search
+
+              = link_to edit_organisation_path(organisation), title: t('edit'), class: 'ui button' do
+                i.icon.edit
+
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate @organisations
+
+- else
+  .ui.header.huge.centered = t('.no_organisations')
+  br
+
+.ui.segment.basic.center.aligned = link_to t('new_organisation'), new_organisation_path, class: 'ui big orange button'

@@ -1,0 +1,29 @@
+table.ui.celled.table
+  thead
+    tr
+      th.collapsing = t('activerecord.attributes.event.date_event')
+      th = t('activerecord.models.event')
+  tbody
+    - events.each do |event|
+      tr
+        td.center.aligned
+          i.icon.calendar
+          = dt(event.date_event)
+
+        td
+          .ui.card.fluid
+            .content
+              .description.justify = simple_format(event.description)
+
+            .extra.content
+              span.right.floated
+                i.icon.user
+                = event.user.short_name
+              span
+                .ui.basic.icon.buttons
+                  = link_to edit_event_path(event), title: t('edit'), class: 'ui button' do
+                    i.icon.edit
+
+                  - if current_user == event.user
+                    = link_to event, data: { confirm: t('.delete_event') }, method: :delete, title: t('delete'), class: 'ui button' do
+                      i.icon.remove

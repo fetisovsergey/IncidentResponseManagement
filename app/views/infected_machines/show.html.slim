@@ -1,0 +1,39 @@
+table.ui.celled.table
+  thead
+    tr
+      th = t('activerecord.models.infected_machine')
+      th = @infected_machine.name
+
+  tbody
+    tr
+      td = t('activerecord.attributes.infected_machine.botnet_id')
+      td = link_to @infected_machine.botnet.name, @infected_machine.botnet, class: 'ui basic button'
+
+    tr
+      td = t('activerecord.attributes.infected_machine.incident_id')
+      td = link_to "№ #{@incident.identificator}/#{@incident.source}", incident_path(@incident), class: 'ui button basic'
+
+    tr
+      td = t('activerecord.attributes.infected_machine.organisation_id')
+      td = link_to @organisation.name, organisation_path(@organisation), class: 'ui button basic'
+
+    tr
+      td = t('activerecord.attributes.infected_machine.ip')
+      td = @infected_machine.ip
+
+    tr
+      td = t('activerecord.attributes.infected_machine.hdd_id')
+      td = @infected_machine.hdd_id
+
+    tr
+      td = t('activerecord.attributes.infected_machine.mac')
+      td = @infected_machine.mac
+
+    tr
+      td = t('activerecord.attributes.infected_machine.description')
+      td.justify = simple_format(@infected_machine.description)
+
+.ui.segment.basic.right.aligned
+  .ui.buttons
+    = link_to t('.edit_infected_machine'), edit_infected_machine_path(@infected_machine), class: 'ui button basic red'
+    = link_to t('infected_machines_on_control'), infected_machines_path, class: 'ui button basic blue'

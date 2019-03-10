@@ -1,0 +1,50 @@
+body {
+  font-family: 'Times New Roman', Times;
+  font-size: 14px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+// Doubling header of table
+/*
+table {
+  thead {
+    display: table-row-group;
+  }
+}
+*/
+
+tr {
+  page-break-inside: avoid;
+}
+
+td, th {
+  padding: 3px 8px
+}
+
+table {
+  width: 100%;
+}
+
+.centered {
+  text-align: center
+}
+
+.justify {
+  text-align: justify
+}
+
+.righted {
+  text-align: right
+}
+
+.lefted {
+  text-align: left
+}
+
+.more {
+  page-break-after: always
+}

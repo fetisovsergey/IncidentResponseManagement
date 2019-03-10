@@ -1,0 +1,41 @@
+ru:
+  activerecord:
+    models:
+      incident: "Инцидент"
+    attributes:
+      incident:
+        current_state: "Текущее состояние"
+        date_incident: "Дата инцидента"
+        date_close: "Дата закрытия"
+        date_receive: "Дата получения"
+        description: "Описание"
+        identificator: "Номер №"
+        organisation_id: "Организация"
+        own: "Отв"
+        state: "Статус"
+        source: "Источник"
+        user_id: "Ответственный"
+    errors:
+      models:
+        incident:
+          attributes:
+            date_receive:
+              not_in_the_past: "не может быть раньше даты инцидента"
+            date_close:
+              not_in_the_past: "не может быть раньше даты инцидента"
+  simple_form:
+    prompts:
+      incident:
+        organisation_id: "Выберите организацию:"
+        source: "Выберите источник информации:"
+        user_id: "Выберите ответственного за инцидент:"
+    placeholders:
+      incident:
+        current_state: "Введите текущее состояние"
+        description: "Введите описание"
+        identificator: "Введите номер инцидента"
+    options:
+      incident:
+        state:
+          active: В работе
+          closed: Закрыт

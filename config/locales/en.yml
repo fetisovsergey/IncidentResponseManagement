@@ -1,0 +1,110 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  actions: "Actions"
+  active_incidents: "Active Incidents"
+  active_incidents_count:  "Quantity of open incidents "
+  analytics: "Analytics"
+  back: "Back"
+  botnets_on_control: "Botnets"
+  cfo: "CFO"
+  choose_country: "Choose country"
+  chronology: "Chronology"
+  closed_incidents: "Closed Incidents"
+  closed_incidents_count: "Quantity of closed incidents "
+  countries: "Countries"
+  country: "Country"
+  date_finish: "End date"
+  date_start: "Start date"
+  days_count: "Quantity of days for incident"
+  delete: "Delete"
+  delete_departure: "Do you want to delete departure?"
+  delete_document: "Do you want to delete prepared document?"
+  delete_infected_machine: "Do you want to delete infected machine?"
+  delete_relationship: "Do you want to delete relationship with C&C-server?"
+  delete_remote_control_center: "Do you want to delete C&C-server?"
+  departures_count: "Quantity of departures"
+  departures_on_control: "Departures"
+  documents_count: "Quantity of prepared documents"
+  documents_on_control: "Prepared documents"
+  edit: "Edit"
+  enter_keyword: "Enter keyword to search"
+  export: "Export DB"
+  export_db_json: "JSON"
+  export_db_seeds: "seeds.rb"
+  generate_pdf: "Generate PDF"
+  generate_svodka: "Generate svodka"
+  incidents_count: "Quantity of incidents"
+  incidents_on_control: "Incidents"
+  include_country: "Include country"
+  infected_machine: "Computer"
+  infected_machines_on_control: "Computers"
+  infected_machines_count: "Computers Count"
+  last_event: "Last Event"
+  log_in: "Log In"
+  new_botnet: "Add botnet"
+  new_incident: "Add incident"
+  new_organisation: "Add organisation"
+  new_remote_control_center: "Add C&C-server"
+  no_active_incidents: "No active incidents"
+  no_closed_incidents: "No close incidents"
+  no_countries: "No countries"
+  no_departures: "No departures"
+  no_documents: "No prepared documents"
+  no_events: "No events"
+  no_incidents_for_period: "No incidents for this period"
+  no_infected_machines: "No infected machines"
+  no_remote_control_centers: "No C&C-servers"
+  not_found: "Not Found"
+  one_more: " one more time"
+  organisations_count: "Quantity of organisations"
+  organisations_on_control: "Organisations"
+  remember_me: "Remember me"
+  remote_control_centers_count: "C&C-servers quantity"
+  remote_control_centers_on_control: "C&C centers"
+  rcm: "RCM"
+  search: "Search"
+  scr: "Networks of intelligence service"
+  show: "Show"
+  show_incidents: "Show incidents"
+  sign_out: "Sign Out"
+  sign_up: " Sign Up"
+  statistic: "Statistic"
+  svodka: "Svodka"
+  unfollow: "Unfollow"
+  users_svodka: "Users"
+
+  helpers:
+    submit:
+      create: Create
+      submit: Submit
+      update: Update

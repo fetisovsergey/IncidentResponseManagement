@@ -1,0 +1,23 @@
+= simple_form_for(@infected_machine, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @infected_machine, ff: f}
+
+  = f.hidden_field :incident_id
+
+  = f.hidden_field :organisation_id
+
+  .field = f.input :name, placeholder: t('simple_form.placeholders.infected_machine.name')
+
+  .field = f.input :botnet_id, as: :select, collection: Botnet.all, prompt: :translate, input_html: {class: 'ui search selection dropdown'}
+
+  .field = f.input :ip, placeholder: t('simple_form.placeholders.infected_machine.ip'), as: :string
+
+  .field = f.input :mac, placeholder: t('simple_form.placeholders.infected_machine.mac'), as: :string
+
+  .field = f.input :hdd_id, placeholder: t('simple_form.placeholders.infected_machine.hdd_id'), as: :string
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.infected_machine.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

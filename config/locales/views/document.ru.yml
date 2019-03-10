@@ -1,0 +1,8 @@
+ru:
+  documents:
+    new:
+      new_document: "Добавить подготовленный отчет"
+    edit:
+      edit_document: "Редактировать подготовленный отчет"
+    show:
+      edit_document: "Редактировать подготовленный отчет"

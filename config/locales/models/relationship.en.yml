@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      relationship: "Relationship"
+    attributes:
+      relationship:
+        incident_id: "Incident"
+        remote_control_center_id: "Remote Control Center"
+  simple_form:
+    prompts:
+      relationship:
+        remote_control_center_id: "Choose remote control center"

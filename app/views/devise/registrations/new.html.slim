@@ -1,0 +1,32 @@
+.ui.segment.vertical = link_to image_tag('icon.png', class:'ui tiny image centered'), new_user_session_path
+
+h3 = t('sign_up')
+
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @user, ff: f}
+
+  .field = f.input :email, placeholder: t('simple_form.placeholders.user.email')
+
+  .ui.two.column.grid
+    .column
+      .field = f.input :name, placeholder: t('simple_form.placeholders.user.name')
+    .column
+      .field = f.input :second_name, placeholder: t('simple_form.placeholders.user.second_name')
+
+  br
+
+  .field = f.input :surname, placeholder: t('simple_form.placeholders.user.surname')
+
+  .ui.two.column.grid
+    .column
+      .field = f.input :password, placeholder: t('simple_form.placeholders.user.password')
+    .column
+      .field = f.input :password_confirmation, placeholder: t('simple_form.placeholders.user.password') + t('one_more')
+
+  br
+
+  .actions = f.button :submit, t('sign_up'), class: 'ui green button large fluid'
+
+br
+
+= link_to t('back'), new_user_session_path, class: 'ui button large red fluid'

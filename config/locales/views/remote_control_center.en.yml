@@ -1,0 +1,10 @@
+en:
+  remote_control_centers:
+    edit:
+      edit_remote_control_center: "Edit remote_control_center info"
+    show:
+      edit_remote_control_center: "Edit remote_control_center info"
+    index:
+      countries: "Countries"
+      countries_count: "Quantity of countries"
+      remote_control_centers_count: "Quantity of C&C-servers"

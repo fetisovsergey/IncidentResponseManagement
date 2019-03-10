@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      departure: "Departure"
+    attributes:
+      departure:
+        date_start: "Date of departure"
+        description: "Description"
+        incident_id: "Incident"
+        user_id: "Participant of departure"
+    errors:
+      models:
+        departure:
+          attributes:
+            date_start:
+              not_in_the_past: "couldn't be earlier than date of receiving information"
+  simple_form:
+    prompts:
+      departure:
+        user_id: "Choose participant of departure:"
+    placeholders:
+      departure:
+        description: "Enter description of departure"

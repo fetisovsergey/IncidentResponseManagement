@@ -1,0 +1,33 @@
+en:
+  activerecord:
+    models:
+      remote_control_center: "Remote Control Center"
+    attributes:
+      remote_control_center:
+        botnet_id: "Botnet"
+        country: "Country"
+        description: "Description"
+        domain: "Domain"
+        ip: "IP-address"
+        name: "Name"
+    errors:
+      models:
+        remote_control_center:
+          attributes:
+            ip:
+              blank: "not set"
+              invalid_ipaddr: "has uncorrect format"
+            country:
+              undetected: "undetected by IP-address"
+            domain:
+              blank: "not set"
+  simple_form:
+    prompts:
+      remote_control_center:
+        botnet_id: "Choose botnet:"
+    placeholders:
+      remote_control_center:
+        description: "Enter description of remote control center"
+        domain: "Enter domain"
+        ip: "Enter IP-address"
+        name: "Enter name"

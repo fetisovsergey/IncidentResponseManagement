@@ -1,0 +1,4 @@
+ru:
+  simple_form:
+    error_notification:
+      default_message: "Обратите внимание на возникшие ошибки:"

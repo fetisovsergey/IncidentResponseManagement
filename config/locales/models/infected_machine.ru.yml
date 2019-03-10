@@ -1,0 +1,34 @@
+ru:
+  activerecord:
+    models:
+      infected_machine: "Зараженный компьютер"
+    attributes:
+      infected_machine:
+        botnet_id: "Ботсеть"
+        description: "Описание"
+        hdd_id: "Серийный номер НЖМД"
+        incident_id: "Инцидент"
+        ip: "IP-адрес"
+        mac: "MAC-адрес"
+        name: "Идентификатор"
+        organisation_id: "Организация"
+    errors:
+      models:
+        infected_machine:
+          attributes:
+            ip:
+              blank: "не задан"
+              invalid_ipaddr: "имеет неправильный формат"
+  simple_form:
+    prompts:
+      infected_machine:
+        botnet_id: "Выберите ботсеть:"
+        incident_id: "Выберите инцидент:"
+        organisation_id: "Выберите организацию:"
+    placeholders:
+      infected_machine:
+        description: "Введите описание зараженного компьютера"
+        hdd_id: "Введите серийный номер НЖМД"
+        ip: "Введите IP-адрес"
+        mac: "Введите MAC-адрес"
+        name: "Введите идентификатор"

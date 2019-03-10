@@ -1,0 +1,28 @@
+ru:
+  activerecord:
+    models:
+      organisation: "Организация"
+      object: "Объект"
+    attributes:
+      organisation:
+        address: "Физический адрес"
+        description: "Описание"
+        contact_security: "Контакты начальника отдела информационной безопасности"
+        contact_tech: "Контакты технического специалиста"
+        handler: "ФИО директора организации"
+        ip: "IP-адрес(а)"
+        name: "Название"
+        region: "Регион"
+  simple_form:
+    placeholders:
+      organisation:
+        address: "Введите адрес"
+        contact_tech: "Введите контакты технического специалиста"
+        contact_security: "Введите контакты начальника отдела информационной безопасности"
+        description: "Введите описание организации"
+        handler: "Введите ФИО директора организации"
+        ip: "Введите IP-адрес(а)"
+        name: "Введите название"
+    prompts:
+      organisation:
+        region: "Выберте регион:"

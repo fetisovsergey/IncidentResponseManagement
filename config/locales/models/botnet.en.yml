@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      botnet: "Botnet"
+    attributes:
+      botnet:
+        description: "Description"
+        name: "Name"
+  simple_form:
+    placeholders:
+      botnet:
+        description: "Enter description of botnet"
+        name: "Enter name"

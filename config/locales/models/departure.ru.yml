@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    models:
+      departure: "Выездное мероприятие"
+    attributes:
+      departure:
+        date_start: "Дата мероприятия"
+        description: "Описание"
+        user_id: "Участник мероприятия"
+        incident_id: "Инцидент"
+    errors:
+      models:
+        departure:
+          attributes:
+            date_start:
+              not_in_the_past: "не может быть раньше даты получения материалов"
+  simple_form:
+    prompts:
+      departure:
+        user_id: "Выберите участника мероприятия:"
+    placeholders:
+      departure:
+        description: "Введите описание мероприятия"

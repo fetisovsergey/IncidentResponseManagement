@@ -1,0 +1,108 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  actions: "Действия"
+  active_incidents: "Активные инциденты"
+  active_incidents_count:  "Количество открытых инцидентов "
+  analytics: "Аналитика"
+  back: "Назад"
+  botnets_on_control: "Ботсети"
+  choose_country: "Выберите страну"
+  chronology: "Хронология"
+  closed_incidents: "Закрытые инциденты"
+  closed_incidents_count: "Количество закрытых инцидентов "
+  countries: "Страны"
+  country: "Страна"
+  date_finish: "Конец"
+  date_start: "Начало"
+  days_count: "Количество дней, затраченных на инцидент"
+  delete: "Удалить"
+  delete_departure: "Вы уверены, что хотите удалить выездное мероприятие?"
+  delete_document: "Вы уверены, что хотите удалить подготовленный документ?"
+  delete_infected_machine: "Вы хотите удалить зараженный компьютер?"
+  delete_relationship: "Вы действительно хотите удалить связь с центром управления ботсетью?"
+  delete_remote_control_center: "Вы хотите удалить центр управления ботсетью?"
+  departures_count: "Количество выездных мероприятий"
+  departures_on_control: "Выездные мероприятия"
+  documents_count: "Количество подготовленных документов"
+  documents_on_control: "Подготовленные документы"
+  edit: "Редактировать"
+  enter_keyword: "Введите ключевое слово для поиска"
+  export: "Экспорт БД"
+  export_db_json: "JSON"
+  export_db_seeds: "seeds.rb"
+  generate_pdf: "Создать PDF"
+  generate_svodka: "Создать сводку"
+  incident_analytics: "Аналитика по инцидентам"
+  incidents_count: "Количество инцидентов"
+  incidents_on_control: "Инциденты"
+  include_country: "Учитывать страну"
+  infected_machine: "Зараженный компьютер"
+  infected_machines_on_control: "Зараженные компьютеры на контроле"
+  infected_machines_count: "Количество зараженных компьютеров"
+  last_event: "Последнее событие"
+  log_in: "Войти"
+  new_botnet: "Добавить ботсеть"
+  new_incident: "Добавить инцидент"
+  new_organisation: "Добавить организацию"
+  new_remote_control_center: "Добавить центр управления ботсетью"
+  no_active_incidents: "Нет активных инцидентов"
+  no_closed_incidents: "Нет закрытых инцидентов"
+  no_countries: "Нет стран"
+  no_departures: "Выездных мероприятий не проводилось"
+  no_documents: "Нет подготовленных документов"
+  no_events: "Нет событий"
+  no_incidents_for_period: "Нет инцидентов за выбранный период"
+  no_infected_machines: "Зараженных компьютеров не добавлено"
+  no_remote_control_centers: "Центр управления ботсетей не добавлено"
+  not_found: "Страница не найдена"
+  one_more: " еще раз"
+  organisations_count: "Количество организаций"
+  organisations_on_control: "Организации"
+  remember_me: "Запомнить меня"
+  remote_control_centers_count: "Количество центров управления ботсетью"
+  remote_control_centers_on_control: "Центр управления ботсетью на контроле"
+  search: "Поиск"
+  show: "Показать"
+  show_incidents: "Показать инциденты"
+  sign_out: "Выйти"
+  sign_up: "Регистрация"
+  statistic: "Статистика"
+  svodka: "Сводка"
+  unfollow: "Отвязать"
+  users_svodka: "Пользователи"
+
+  helpers:
+    submit:
+      create: Создать
+      submit: Сохранить
+      update: Обновить

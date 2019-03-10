@@ -1,0 +1,8 @@
+en:
+  departures:
+    new:
+      new_departure: "Add departure"
+    edit:
+      edit_departure: "Edit departure"
+    show:
+      edit_departure: "Edit departure"

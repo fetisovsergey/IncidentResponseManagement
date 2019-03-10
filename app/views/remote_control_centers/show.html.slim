@@ -1,0 +1,38 @@
+table.ui.celled.table
+  thead
+    tr
+      th = t('activerecord.models.remote_control_center')
+      th = @remote_control_center.name
+
+  tbody
+    tr
+      td = t('activerecord.attributes.remote_control_center.botnet_id')
+      td = link_to @remote_control_center.botnet.name, @remote_control_center.botnet, class: 'ui basic button'
+
+    tr
+      td = t('activerecord.attributes.remote_control_center.ip')
+      td = @remote_control_center.ip
+
+    tr
+      td = t('activerecord.attributes.remote_control_center.domain')
+      td = @remote_control_center.domain
+
+    tr
+      td = t('activerecord.attributes.remote_control_center.country')
+      td
+        - country_name = @remote_control_center.country
+
+        - if country_name
+          i.icon.flag
+          = country_name
+    tr
+      td = t('activerecord.attributes.remote_control_center.description')
+      td.justify = simple_format(@remote_control_center.description)
+
+.ui.segment.basic.right.aligned
+  .ui.buttons
+    = link_to t('.edit_remote_control_center'), edit_remote_control_center_path(@remote_control_center), class: 'ui button basic red'
+    = link_to t('remote_control_centers_on_control'), remote_control_centers_path, class: 'ui button basic blue'
+
+= render partial: 'incidents/incidents_table_adaptive', locals: { incidents: @incidents, title: 'incidents_on_control' } if @incidents.present?
+br

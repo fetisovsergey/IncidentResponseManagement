@@ -1,0 +1,12 @@
+= simple_form_for(@event, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @event, ff: f}
+
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :incident_id
+
+  .field
+    .ui.calendar.datepicker = f.input :date_event, input_html: { placeholder: t('activerecord.attributes.event.date_event'), value: @event.new_record? ? Time.now.strftime("%d.%m.%Y") : @event.date_event }, as: :string
+
+  .field = f.input :description,  placeholder: t('simple_form.placeholders.event.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned = f.button :submit, class: 'ui button'

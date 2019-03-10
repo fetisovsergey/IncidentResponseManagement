@@ -1,0 +1,34 @@
+h2.centered = t('analytics')
+
+.more
+  h2.centered = t('remote_control_centers_count')
+  = bar_chart @botnet_remote_contol_centers_diagram
+  br
+  hr
+  br
+  = bar_chart @remote_control_center_countries_diagram
+
+.more
+  h2.centered = t('infected_machines_count')
+  = bar_chart @botnet_infected_machines_diagram
+
+  h2.centered = t('organisations_count')
+  = column_chart @organisation_regions_diagram
+
+.more
+  h2.centered = t('incidents_count')
+  = bar_chart @user_incidents_diagram
+
+  h2.centered = t('departures_count')
+  = bar_chart @user_departures_diagram
+
+.more
+  h2.centered = t('incidents_count')
+  = bar_chart @botnet_incidents_diagram
+  br
+  hr
+  br
+  = column_chart @source_incidents_diagram
+
+h2.centered = t('days_count')
+= bar_chart @incident_time_diagram

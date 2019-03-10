@@ -1,0 +1,18 @@
+.ui.segment
+  = form_tag({controller: controller_name, action: action_name}, method: "get", class: "ui form") do
+    .two.fields
+      .field
+        = label_tag :date_start, t('date_start')
+        .ui.calendar.datepicker = text_field_tag(:date_start, value: params[:date_start])
+
+      .field
+        = label_tag :date_finish, t('date_finish')
+        .ui.calendar.datepicker = text_field_tag(:date_finish, value: params[:date_finish])
+
+    .ui.buttons
+      button.ui.button.basic.blue type="submit" = t('show')
+
+      - if action_name == 'analytics'
+        = link_to analytics_path(format: 'pdf', date_start: params[:date_start], date_finish: params[:date_finish]), class: 'ui button basic black'
+          i.icon.file.pdf.outline
+          = t('generate_pdf')

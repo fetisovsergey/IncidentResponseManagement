@@ -1,0 +1,50 @@
+= simple_form_for(@incident, html: {class: 'ui form'}) do |f|
+
+  = render partial: 'shared/errors', locals: {object: @incident, ff: f}
+
+  = f.hidden_field :user_id, value: current_user.id if @incident.new_record?
+
+
+  .ui.two.column.grid
+    .column
+      .field = f.input :identificator, placeholder: t('simple_form.placeholders.incident.identificator'), input_html: {value: @incident.new_record? ? Incident.last.identificator + 1 : @incident.identificator}, as: :string
+
+    .column
+      .field = f.input :source, as: :select, collection: Incident::SOURCE_LIST, prompt: :translate, input_html: {class: 'ui selection dropdown'}
+
+  br
+
+  .field = f.input :organisation_id, as: :select, collection: Organisation.all, prompt: :translate, input_html: {class: 'ui search selection dropdown'}
+
+  br
+
+  .ui.two.column.grid
+    .column
+      .field
+        .ui.calendar.datepicker = f.input :date_incident, placeholder: t('activerecord.attributes.incident.date_incident'), as: :string
+
+    .column
+      .field
+        .ui.calendar.datepicker = f.input :date_receive, placeholder: t('activerecord.attributes.incident.date_receive'), as: :string
+
+    - if @incident.closed?
+      .column
+        .field
+          .ui.calendar.datepicker = f.input :date_close, placeholder: t('activerecord.attributes.incident.date_close'), as: :string
+
+  br
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.incident.description'), input_html: { rows: 7, maxlength: 2000 }
+
+  .field = f.input :current_state, placeholder: t('simple_form.placeholders.incident.current_state'), input_html: { rows: 7, maxlength: 2000 }
+
+  - if @incident.persisted?
+    br
+    .ui.divider
+
+    .field = f.input :user_id, as: :select, collection: User.all.collect { |user| [user.short_name, user.id] }, prompt: :translate, input_html: {class: 'ui selection dropdown'}
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

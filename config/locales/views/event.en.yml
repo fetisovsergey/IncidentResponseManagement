@@ -1,0 +1,8 @@
+en:
+  events:
+    new:
+      new_event: "Add event"
+    edit:
+      edit_event: "Edit event"
+    events_table:
+      delete_event: "Do you want to delete event?"

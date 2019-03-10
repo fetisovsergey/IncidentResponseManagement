@@ -1,0 +1,8 @@
+ru:
+  organisations:
+    index:
+      no_organisations: "Нет добавленных организаций"
+    edit:
+      edit_organisation: "Изменить данные организации"
+    show:
+      delete_organisation: "Вы уверены, что хотите удалить организацию?"

@@ -1,0 +1,16 @@
+= simple_form_for(@departure, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @departure, ff: f}
+
+  = f.hidden_field :incident_id
+
+  .field = f.input :user_id, as: :select, collection: User.all.collect { |user| [user.short_name, user.id] }, prompt: :translate, input_html: {class: 'ui selection dropdown'}
+
+  .field
+    .ui.calendar.datepicker = f.input :date_start, placeholder: t('activerecord.attributes.departure.date_start'),  as: :string
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.departure.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

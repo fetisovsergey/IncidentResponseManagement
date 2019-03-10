@@ -1,0 +1,34 @@
+en:
+  activerecord:
+    models:
+      infected_machine: "Infected Machine"
+    attributes:
+      infected_machine:
+        botnet_id: "Botnet"
+        description: "Description"
+        hdd_id: "Serial number HDD"
+        ip: "IP"
+        incident_id: "Incident"
+        mac: "MAC-address"
+        name: "Identificator"
+        organisation_id: "Organisation"
+    errors:
+      models:
+        infected_machine:
+          attributes:
+            ip:
+              blank: "not set"
+              invalid_ipaddr: "has uncorrect format"
+  simple_form:
+    prompts:
+      infected_machine:
+        botnet_id: "Choose botnet:"
+        incident_id: "Choose incident:"
+        organisation_id: "Choose organisation:"
+    placeholders:
+      infected_machine:
+        description: "Enter description of infected machine"
+        hdd_id: "Enter serial number HDD"
+        ip: "Enter IP"
+        mac: "Enter MAC"
+        name: "Enter name"

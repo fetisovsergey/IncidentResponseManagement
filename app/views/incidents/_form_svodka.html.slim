@@ -1,0 +1,25 @@
+= form_tag({controller: "incidents", action: action_name}, method: "get", class: "ui form") do
+  .three.fields
+    .field
+      = label_tag :date_start, t('date_start')
+      .ui.calendar.datepicker = text_field_tag(:date_start, value: params[:date_start])
+
+    .field
+      = label_tag :date_finish, t('date_finish')
+      .ui.calendar.datepicker = text_field_tag(:date_finish, value: params[:date_finish])
+
+    .field.country_select
+      = label_tag :country, t('country')
+      = select_tag(:country, options_for_select(countries, params[:country]), prompt: t('choose_country'), class: 'ui dropdown fluid')
+
+  - if countries.present?
+    .field
+      #include_country_input.ui.slider.checkbox
+        input name="include_country" type="checkbox"
+        = label_tag :include_country, t('include_country')
+
+    br
+
+  .ui.buttons
+    button.ui.button.basic.green type="submit" = t('show_incidents')
+    = link_to t('generate_pdf'), {controller: controller_name, action: action_name, date_start: params[:date_start], date_finish: params[:date_finish], country: params[:country], include_country: params[:include_country], format: 'pdf'}, class: 'ui button basic black'

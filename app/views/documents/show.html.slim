@@ -1,0 +1,38 @@
+table.ui.celled.table
+  thead
+    tr
+      th = t('activerecord.models.document')
+      th
+        | № #{@document.number}
+
+  tbody
+    tr
+      td = t('activerecord.attributes.document.date_signature')
+      td
+        i.icon.calendar
+        = dt(@document.date_signature)
+
+    tr
+      td = t('activerecord.attributes.document.destination')
+      td = @document.destination
+
+    tr
+      td = t('activerecord.models.organisation')
+      td = link_to @incident.organisation.name, organisation_path(@incident.organisation), class: 'ui button basic'
+
+    tr
+      td = t('activerecord.attributes.departure.incident_id')
+      td = link_to "№ #{@incident.identificator}/#{@incident.source}", incident_path(@incident), class: 'ui button basic'
+
+    tr
+      td = t('activerecord.attributes.document.user_id')
+      td = link_to @user.short_name, @user, class: 'ui blue button'
+
+    tr
+      td = t('activerecord.attributes.document.description')
+      td.justify = simple_format(@document.description)
+
+.ui.segment.basic.right.aligned
+  .ui.buttons
+    = link_to t('.edit_document'), edit_document_path(@document), class: 'ui button basic red'
+    = link_to t('documents_on_control'), documents_path, class: 'ui button basic blue'

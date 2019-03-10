@@ -1,0 +1,11 @@
+= render partial: 'incidents/incidents_card_small', locals: { incident: @incident }
+
+- infected_machines = @incident.infected_machines
+
+- if infected_machines.present?
+  .ui.header.center.aligned = t('infected_machines_on_control')
+  = render partial: 'infected_machines/infected_machines_table', locals: { infected_machines: infected_machines }
+
+h1 = t('.new_infected_machine')
+br
+= render 'form'

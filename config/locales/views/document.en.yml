@@ -1,0 +1,8 @@
+en:
+  documents:
+    new:
+      new_document: "Add document"
+    edit:
+      edit_document: "Edit document info"
+    show:
+      edit_document: "Edit document info"

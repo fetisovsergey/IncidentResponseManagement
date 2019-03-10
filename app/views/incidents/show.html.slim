@@ -1,0 +1,170 @@
+.ui.header.center.aligned
+  | #{t('activerecord.models.incident').mb_chars.upcase} № #{@incident.identificator}/#{@incident.source}
+
+.ui.basic.segment.right.aligned
+  u = link_to "#{t('activerecord.attributes.incident.own')}. #{@incident.user.short_name}", @incident.user, class: 'link_custom'
+
+table.ui.celled.table
+  thead
+    tr
+      th = t('activerecord.models.object')
+      th = link_to @incident.organisation.name, @incident.organisation, class: 'link_custom'
+
+  tbody
+    tr
+      td = t('activerecord.attributes.incident.state')
+      td
+        = t @incident.state, scope: [:simple_form, :options, :incident, :state]
+
+        - if @incident.closed?
+          | &emsp;
+          i.icon.calendar
+          = dt(@incident.date_close)
+
+    tr
+      td = t('activerecord.attributes.incident.date_incident')
+      td
+        i.icon.calendar
+        = dt(@incident.date_incident)
+
+    tr
+      td
+        | #{t('activerecord.attributes.incident.source')}, #{t('activerecord.attributes.incident.date_receive').mb_chars.downcase}
+      td
+        | #{@incident.source},&emsp;
+        i.icon.calendar
+        = dt(@incident.date_receive)
+
+    tr
+      td = t('activerecord.attributes.incident.description')
+      td.justify = simple_format(@incident.description)
+
+    tr
+      td = t('activerecord.attributes.organisation.contact_security')
+      td = @incident.organisation.contact_security
+
+    tr
+      td = t('activerecord.attributes.organisation.contact_tech')
+      td = @incident.organisation.contact_tech
+
+    tr
+      td = t('activerecord.attributes.incident.current_state')
+      td.justify = simple_format(@incident.current_state)
+
+    tr
+      td = t('activerecord.attributes.organisation.handler')
+      td = @incident.organisation.handler
+
+    tr
+      td = t('infected_machines_count')
+      td
+        i.icon.laptop
+        = @incident.infected_machines.count
+
+    tr
+      td = t('departures_on_control')
+      td
+        i.icon.car
+        = @incident.departures.count
+
+    tr
+      td = t('documents_on_control')
+      td
+        - @documents.each do |document|
+          | № #{document.number} от #{dt(document.date_signature)} - в #{document.destination}
+          br
+
+.ui.segment.basic.right.aligned
+  .ui.buttons
+    = link_to incident_path(@incident, format: 'pdf'), class: 'ui button basic black' do
+      i.icon.file.pdf.outline
+      = t('generate_pdf')
+
+    = link_to edit_incident_path(@incident), class: 'ui button basic blue' do
+      i.icon.edit
+      = t('.edit_incident')
+
+    - if @incident.active?
+      = link_to close_incident_path(@incident), class: 'ui button basic green' do
+        i.icon.remove
+        = t('.close_incident')
+    - else
+      = link_to t('.open_incident'), open_incident_path(@incident), class: 'ui button basic red'
+
+- if @documents.present?
+  .ui.header.center.aligned = t('documents_on_control')
+  = render partial: 'documents/documents_table', locals: { documents: @documents }
+- else
+  .ui.teal.message
+    i.icon.close
+    .header = t('no_documents')
+
+.ui.segment.basic.right.aligned
+  = link_to new_document_path(incident_id: @incident.id), class: 'ui button basic teal' do
+    i.icon.file.text.outline
+    = t('.new_document')
+
+- if @departures.present?
+  .ui.header.center.aligned = t('departures_on_control')
+  = render partial: 'departures/departures_table', locals: { departures: @departures }
+- else
+  .ui.violet.message
+    i.icon.close
+    .header = t('no_departures')
+
+.ui.segment.basic.right.aligned
+  = link_to new_departure_path(incident_id: @incident.id), class: 'ui button basic violet' do
+    i.icon.car
+    = t('.new_departure')
+
+- if @remote_control_centers.present?
+  .ui.header.center.aligned = t('remote_control_centers_on_control')
+  = render partial: 'remote_control_centers/remote_control_centers_table', locals: { remote_control_centers: @remote_control_centers, incident: @incident }
+
+- else
+  .ui.red.message
+    i.close.icon
+    .header = t('no_remote_control_centers')
+
+.ui.segment.basic.right.aligned
+  = link_to new_relationship_path(incident_id: @incident.id), class: 'ui button basic red'
+    i.icon.plus
+    = t('.new_relationship')
+
+
+
+- if @infected_machines.present?
+  .ui.header.center.aligned = t('infected_machines_on_control')
+  = render partial: 'infected_machines/infected_machines_table', locals: { infected_machines: @infected_machines }
+
+- else
+  .ui.orange.message
+    i.close.icon
+    .header = t('no_infected_machines')
+
+.ui.segment.basic.right.aligned
+  = link_to new_infected_machine_path(incident_id: @incident.id), class: 'ui button basic orange' do
+    i.icon.laptop
+    = t('.new_infected_machine')
+
+
+- if @events.present?
+  .ui.header.center.aligned = t('chronology')
+  = render partial: 'events/events_table', locals: { events: @events }
+- else
+  .ui.blue.message
+    i.close.icon
+    .header = t('no_events')
+
+- if @event.present?
+  .ui.raised.segment
+    .ui.two.column.grid
+      .column
+        .ui.header = t('.new_event')
+
+      .column.right.aligned
+        i.icon.user
+        = current_user.short_name
+    br
+    = render 'events/form'
+br

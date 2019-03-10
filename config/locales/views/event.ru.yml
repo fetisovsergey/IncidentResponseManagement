@@ -1,0 +1,8 @@
+ru:
+  events:
+    new:
+      new_event: "Добавить событие"
+    edit:
+      edit_event: "Редактировать событие"
+    events_table:
+      delete_event: "Вы хотите удалить событие?"

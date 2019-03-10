@@ -1,0 +1,11 @@
+ru:
+  infected_machines:
+    new:
+      new_infected_machine: "Добавить зараженный компьютер"
+    edit:
+      edit_infected_machine: "Редактировать зараженный компьютер"
+    show:
+      edit_infected_machine: "Редактировать зараженный компьютер"
+    index:
+      infected_machines_count: "Количество зараженных компьютеров"
+      new_infected_machine: "Добавить зараженный компьютер"

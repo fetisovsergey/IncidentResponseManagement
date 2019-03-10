@@ -1,0 +1,11 @@
+en:
+  infected_machines:
+    new:
+      new_infected_machine: "Add infected_machine"
+    edit:
+      edit_infected_machine: "Edit infected_machine info"
+    show:
+      edit_infected_machine: "Edit infected_machine info"
+    index:
+      infected_machines_count: "Quantity of infected machines"
+      new_infected_machine: "Add infected_machine"

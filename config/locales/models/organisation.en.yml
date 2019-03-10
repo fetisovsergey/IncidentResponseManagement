@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      organisation: "Organisation"
+      object: "Object"
+    attributes:
+      organisation:
+        address: "Physical address"
+        description: "Description"
+        contact_security: "Contact of security"
+        contact_tech: "Contact of tech"
+        handler: "Handler"
+        ip: "IP-address(es)"
+        name: "Name"
+        region: "Region"
+  simple_form:
+    placeholders:
+      organisation:
+        address: "Enter address"
+        contact_tech: "Enter contacts of tech specialist"
+        contact_security: "Enter contacts of security"
+        description: "Enter description of organisation"
+        handler: "Enter handler"
+        ip: "Enter IP-adress(es)"
+        name: "Enter organisation"
+    prompts:
+      organisation:
+        region: "Choose region:"

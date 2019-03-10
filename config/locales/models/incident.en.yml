@@ -1,0 +1,41 @@
+en:
+  activerecord:
+    models:
+      incident: "Incident"
+    attributes:
+      incident:
+        current_state: "Current state"
+        date_incident: "Date of incident"
+        date_close: "Close date"
+        date_receive: "Receive date"
+        description: "Description"
+        identificator: "Identificator"
+        organisation_id: "Organisation"
+        own: "Owner"
+        state: "State"
+        source: "Source"
+        user_id: "Owner"
+    errors:
+      models:
+        incident:
+          attributes:
+            date_receive:
+              not_in_the_past: "couldn't be earlier than date of incident"
+            date_close:
+              not_in_the_past: "couldn't be earlier than date of incident"
+  simple_form:
+    prompts:
+      incident:
+        organisation_id: "Choose organisation:"
+        source: "Choose source of information:"
+        user_id: "Choose owner:"
+    placeholders:
+      incident:
+        current_state: "Enter current state"
+        description: "Enter description"
+        identificator: "Enter incident identificator"
+    options:
+      incident:
+        state:
+          active: Active
+          closed: Closed

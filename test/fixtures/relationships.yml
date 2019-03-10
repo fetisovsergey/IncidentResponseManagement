@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  remote_control_center_id: 1
+  incident_id: 1
+
+two:
+  remote_control_center_id: 1
+  incident_id: 1

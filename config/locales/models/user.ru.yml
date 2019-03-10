@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    models:
+      user: "Пользователь"
+    attributes:
+      user:
+        email: "Логин"
+        name: "Имя пользователя"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        second_name: "Отчество пользователя"
+        surname: "Фамилия пользователя"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              not_match: " не совпадает с подтверждением пароля"
+  simple_form:
+    placeholders:
+      user:
+        email: "Введите логин"
+        name: "Введите имя"
+        password: "Введите пароль"
+        second_name: "Введите отчество"
+        surname: "Введите фамилию"

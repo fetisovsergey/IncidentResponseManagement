@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      botnet: "Ботсеть"
+    attributes:
+      botnet:
+        description: "Описание"
+        name: "Название"
+  simple_form:
+    placeholders:
+      botnet:
+        description: "Введите описание ботсети"
+        name: "Введите название"

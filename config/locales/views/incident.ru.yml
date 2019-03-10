@@ -1,0 +1,16 @@
+ru:
+  incidents:
+    edit:
+      edit_incident: "Изменить данные инцидента"
+    active_incidents:
+      new_incident: "Добавить новый инцидент"
+    show:
+      close_incident: "Закрыть инцидент"
+      delete_event: "Вы действительно хотите удалить событие?"
+      edit_incident: "Редактировать инцидент"
+      new_departure: "Добавить выездное мероприятие"
+      new_document: "Добавить подготовленный документ"
+      new_event: "Добавить событие"
+      new_infected_machine: "Добавить зараженный компьютер"
+      new_relationship: "Связать с C&C"
+      open_incident: "Открыть инцидент"

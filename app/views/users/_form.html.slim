@@ -1,0 +1,18 @@
+= simple_form_for(@user, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @user, ff: f}
+
+  .field = f.input :email, placeholder: t('simple_form.placeholders.user.email')
+
+  .field = f.input :name, placeholder: t('simple_form.placeholders.user.name')
+
+  .field = f.input :second_name, placeholder: t('simple_form.placeholders.user.second_name')
+
+  .field = f.input :surname, placeholder: t('simple_form.placeholders.user.surname')
+
+  .field = f.input :password, placeholder: t('simple_form.placeholders.user.password')
+
+  .field = f.input :password_confirmation, placeholder: t('simple_form.placeholders.user.password') + t('one_more')
+
+  .actions = f.button :submit, class: 'ui green button'
+
+br

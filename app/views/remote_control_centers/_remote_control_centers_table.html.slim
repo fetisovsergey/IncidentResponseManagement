@@ -1,0 +1,25 @@
+table.ui.celled.table
+  thead
+    tr.center.aligned
+      th.collapsing = t('activerecord.attributes.remote_control_center.botnet_id')
+      th = t('activerecord.attributes.remote_control_center.name')
+      th = t('activerecord.attributes.remote_control_center.ip')
+      th = t('activerecord.attributes.remote_control_center.domain')
+      th = t('activerecord.attributes.remote_control_center.country')
+      th.collapsing
+
+  tbody.center.aligned
+    - remote_control_centers.each do |remote_control_center|
+      tr
+        td = link_to remote_control_center.botnet.name, remote_control_center.botnet, class: 'ui basic button', target: "#{(action_name == 'statistic') ? '_blank' : ''}"
+        td = link_to remote_control_center.name, remote_control_center, class: 'ui basic button', target: "#{(action_name == 'statistic') ? '_blank' : ''}"
+        td = remote_control_center.ip
+        td = remote_control_center.domain
+        td
+          - country_name = remote_control_center.country
+
+          - if country_name
+            i.icon.flag
+            = country_name
+
+        td.right.aligned = link_to t('unfollow'), remote_control_center.get_relationship(incident.id), data: { confirm: t('delete_relationship') }, method: :delete, class: 'ui button basic small red', target: "#{(action_name == 'statistic') ? '_blank' : ''}"

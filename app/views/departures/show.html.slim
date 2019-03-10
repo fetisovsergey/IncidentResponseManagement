@@ -1,0 +1,37 @@
+table.ui.celled.table
+  thead
+    tr
+      th colspan="2" = t('activerecord.models.departure')
+
+  tbody
+    tr
+      td = t('activerecord.attributes.departure.date_start')
+      td
+        i.icon.calendar
+        = dt(@departure.date_start)
+
+    tr
+      td = t('activerecord.models.organisation')
+      td = link_to @incident.organisation.name, organisation_path(@incident.organisation), class: 'ui button basic'
+
+    tr
+      td = t('activerecord.attributes.departure.incident_id')
+      td = link_to "№ #{@incident.identificator}/#{@incident.source}", incident_path(@incident), class: 'ui button basic'
+
+    tr
+      td = t('activerecord.attributes.incident.user_id')
+      td = link_to @incident.user.short_name, @incident.user, class: 'ui blue button'
+
+    tr
+      td = t('activerecord.attributes.departure.user_id')
+      td = link_to @user.short_name, @user, class: 'ui green button'
+
+    tr
+      td = t('activerecord.attributes.departure.description')
+      td.justify = simple_format(@departure.description)
+
+
+.ui.segment.basic.right.aligned
+  .ui.buttons
+    = link_to t('.edit_departure'), edit_departure_path(@departure), class: 'ui button basic red'
+    = link_to t('departures_on_control'), departures_path, class: 'ui button basic blue'

@@ -1,0 +1,12 @@
+en:
+  botnets:
+    edit:
+      edit_botnet: "Edit botnet info"
+    index:
+      botnets_count: "Quantity of botnets"
+      delete_botnet: "Do you want to delete botnet?"
+      no_botnets: "No botnets"
+    show:
+      countries: "Countries"
+      edit_botnet: "Edit botnet info"
+      new_remote_control_center: "Add remote_control_center"

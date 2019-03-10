@@ -1,0 +1,121 @@
+.ui.segment.padded
+  .ui.header.huge.center.aligned = @botnet.name
+
+  .ui.grid
+    .ten.wide.column.justify = simple_format(@botnet.description)
+
+    .six.wide.column.right.aligned
+      .ui.vertical.buttons
+        = link_to t('.edit_botnet'), edit_botnet_path(@botnet), class: 'ui button red'
+        = link_to t('botnets_on_control'), botnets_path, class: 'ui button blue'
+
+.ui.segment.padded.center.aligned
+  .ui.header.huge = t('statistic')
+  br
+  .ui.three.column.grid.stackable
+
+    .column
+      .ui.red.mini.statistic
+        .label = t('.countries')
+
+        .value
+          - if @countries.present?
+
+            - @countries.each do |country|
+              = country
+              br
+
+          - else
+            = t('no_countries')
+
+    .column
+      .ui.red.statistic
+        .label = t('remote_control_centers_count')
+
+        .value
+          i.icon.cube
+          | &nbsp;
+          = @remote_control_centers.count
+
+    .column
+      .ui.red.statistic
+        .label = t('infected_machines_count')
+
+        a#show_infected_machines.value href="#"
+          i.icon.laptop
+          | &nbsp;
+          = @infected_machines.count
+
+
+.ui.large.modal
+  i.close.icon
+  .header = t('infected_machines_on_control')
+
+  .scrolling.content
+    - if @infected_machines.present?
+      table.ui.celled.table
+        thead
+          tr.center.aligned
+            th.collapsing = t('activerecord.models.incident')
+            th = t('activerecord.attributes.infected_machine.organisation_id')
+            th = t('activerecord.attributes.infected_machine.name')
+            th = t('activerecord.attributes.infected_machine.ip')
+            th = t('activerecord.attributes.infected_machine.hdd_id')
+
+        tbody.center.aligned
+          - @infected_machines.each do |infected_machine|
+            tr
+              - incident = infected_machine.incident
+              td = "№ #{incident.identificator}/#{incident.source}"
+
+              td = incident.organisation.name
+
+              td = infected_machine.name
+              td = infected_machine.ip
+              td = infected_machine.hdd_id
+      br
+    - else
+      .ui.header.centered = t('no_infected_machines')
+
+
+- if @remote_control_centers.present?
+  .ui.header.center.aligned = t('remote_control_centers_on_control')
+
+  table.ui.celled.table
+    thead
+      tr.center.aligned
+        th = sort_link(@q, :name, RemoteControlCenter.human_attribute_name(:name))
+        th = sort_link(@q, :ip, RemoteControlCenter.human_attribute_name(:ip))
+        th = sort_link(@q, :domain, RemoteControlCenter.human_attribute_name(:domain))
+        th = sort_link(@q, :country, RemoteControlCenter.human_attribute_name(:country))
+        th.collapsing
+
+    tbody
+      - @remote_control_centers.each do |remote_control_center|
+        tr.center.aligned
+          td = remote_control_center.name
+          td = remote_control_center.ip
+          td = remote_control_center.domain
+          td
+            - country_name = remote_control_center.country
+
+            - if country_name
+              i.icon.flag
+              = country_name
+
+          td
+            .ui.basic.icon.buttons
+              = link_to remote_control_center_path(remote_control_center), title: t('show'), class: 'ui button' do
+                i.icon.search
+
+              = link_to edit_remote_control_center_path(remote_control_center), title: t('edit'), class: 'ui button' do
+                i.icon.edit
+
+              = link_to remote_control_center, data: { confirm: t('delete_remote_control_center') }, method: :delete, title: t('delete'), class: 'ui button' do
+                i.icon.remove
+
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate @remote_control_centers
+
+.ui.segment.basic.center.aligned = link_to t('.new_remote_control_center'), new_remote_control_center_path(botnet_id: @botnet.id), class: 'ui big red button'

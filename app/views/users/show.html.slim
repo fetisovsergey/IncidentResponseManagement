@@ -1,0 +1,54 @@
+.ui.card.fluid
+
+  .content
+    .ui.buttons.icon.basic.right.floated
+      = link_to users_path, title: t('users_svodka'), class: 'ui button' do
+        i.icon.users
+
+      - if current_user == @user
+        = link_to edit_user_path(@user), title: t('edit'), class: 'ui button' do
+          i.icon.edit
+
+    .header = @user.full_name
+
+    .meta
+      span.category = @user.email
+
+  .content
+    .description
+
+      .ui.three.column.grid.stackable
+        .column.center.aligned
+          .ui.green.statistic
+            .label = t('closed_incidents')
+
+            .value
+              i.icon.line.chart
+              | &nbsp;
+              = @closed_incidents_count
+
+        .column.center.aligned
+          .ui.red.statistic
+            .label = t('active_incidents')
+
+            .value
+              i.icon.line.chart
+              | &nbsp;
+              = @active_incidents_count
+
+        .column.center.aligned
+          .ui.violet.statistic
+            .label = t('departures_on_control')
+
+            .value
+              i.icon.car
+              | &nbsp;
+              = @departures_count
+
+- if @incidents.present?
+  = render partial: 'incidents/incidents_table_adaptive', locals: { incidents: @incidents, title: t('incidents_on_control') }
+- else
+  .ui.negative.message
+    i.close.icon
+    .header = t('.no_incidents')
+br

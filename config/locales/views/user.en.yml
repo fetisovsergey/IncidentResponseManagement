@@ -1,0 +1,8 @@
+en:
+  users:
+    show:
+      all_users: "All users"
+      edit_user:  "Edit profile"
+      no_incidents: "No incidents"
+    edit:
+      edit_user: "Edir profile of "

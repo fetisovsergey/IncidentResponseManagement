@@ -1,0 +1,8 @@
+en:
+  organisations:
+    index:
+      no_organisations: "No organisations"
+    edit:
+      edit_organisation: "Edit organisation information"
+    show:
+      delete_organisation: "Do you want to delete organisation?"

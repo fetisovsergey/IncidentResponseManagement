@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      relationship: "Привязка к C&C"
+    attributes:
+      relationship:
+        incident_id: "Инцидент"
+        remote_control_center_id: "C&C"
+  simple_form:
+    prompts:
+      relationship:
+        remote_control_center_id: "Выберите C&C"

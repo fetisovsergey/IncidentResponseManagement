@@ -1,0 +1,12 @@
+ru:
+  botnets:
+    edit:
+      edit_botnet: "Редактировать ботсеть"
+    index:
+      botnets_count: "Количество ботсетей"
+      delete_botnet: "Вы хотите удалить ботсеть?"
+      no_botnets: "Нет добавленных ботсетей"
+    show:
+      countries: "Страны"
+      edit_botnet: "Редактировать ботсеть"
+      new_remote_control_center: "Добавить C&C"

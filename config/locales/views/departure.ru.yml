@@ -1,0 +1,8 @@
+ru:
+  departures:
+    new:
+      new_departure: "Добавить выездное мероприятие"
+    edit:
+      edit_departure: "Редактировать выездное мероприятие"
+    show:
+      edit_departure: "Редактировать выездное мероприятие"

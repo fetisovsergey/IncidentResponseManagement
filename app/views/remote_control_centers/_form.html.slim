@@ -1,0 +1,17 @@
+= simple_form_for(@remote_control_center, html: {class: 'ui form'}) do |f|
+  = render partial: 'shared/errors', locals: {object: @remote_control_center, ff: f}
+
+  .field = f.input :name, placeholder: t('simple_form.placeholders.remote_control_center.name')
+
+  .field = f.input :botnet_id, as: :select, collection: Botnet.all, prompt: :translate, input_html: {class: 'ui selection dropdown'}
+
+  .field = f.input :ip, placeholder: t('simple_form.placeholders.remote_control_center.ip'), as: :string
+
+  .field = f.input :domain, placeholder: t('simple_form.placeholders.remote_control_center.domain')
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.remote_control_center.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

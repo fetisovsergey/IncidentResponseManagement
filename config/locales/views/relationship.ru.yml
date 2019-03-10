@@ -1,0 +1,6 @@
+ru:
+  relationships:
+    new:
+      new_relationship: "Связать с C&C"
+    edit:
+      edit_relationship: "Редактировать связь с C&C"

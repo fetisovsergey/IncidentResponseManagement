@@ -1,0 +1,72 @@
+.ui.header.huge.center.aligned = t('closed_incidents')
+
+- incidents.each do |incident|
+
+  h3.ui.horizontal.divider.header = "№ #{incident.identificator}/#{incident.source} - #{truncate(incident.organisation.name, length: 64)}"
+
+  .ui.card.fluid
+    .content
+
+      table.ui.celled.table
+        thead
+          tr.center.aligned
+            th.collapsing = t('activerecord.attributes.incident.identificator')
+            th.collapsing = t('activerecord.attributes.incident.date_close')
+            th = t('activerecord.models.organisation')
+            th = t('activerecord.attributes.incident.current_state')
+            th = t('activerecord.attributes.incident.user_id')
+            th.collapsing
+
+        tbody.center.aligned
+          tr
+            td
+              | № #{incident.identificator}/#{incident.source}
+
+            td
+              i.calendar.icon
+              = dt(incident.date_close)
+
+            td = link_to incident.organisation.name, incident.organisation, class: 'ui small basic button bold', target: '_blank'
+
+            td.justify = simple_format(incident.current_state)
+
+            td = link_to incident.user.short_name, user_path(incident.user), class: 'ui blue label', target: '_blank'
+
+            td
+              .ui.lvertical.basic.icon.buttons
+                = link_to incident_path(incident), title: t('show'), class: 'ui button', target: '_blank' do
+                  i.icon.search
+
+                = link_to edit_incident_path(incident), title: t('edit'), class: 'ui button', target: '_blank' do
+                  i.icon.edit
+
+                = link_to incident_path(incident, format: 'pdf'), title: t('generate_pdf'), class: 'ui button' do
+                  i.icon.file.pdf.outline
+
+      - documents = incident.documents
+
+      - if documents.present?
+        .ui.header.center.aligned = t('documents_on_control')
+        = render partial: 'documents/documents_table', locals: { documents: documents }
+
+
+      - departures = incident.departures
+
+      - if departures.present?
+        .ui.header.center.aligned = t('departures_on_control')
+        = render partial: 'departures/departures_table', locals: { departures: departures }
+
+
+      - remote_control_centers = incident.remote_control_centers
+
+      - if remote_control_centers.present?
+        .ui.header.center.aligned = t('remote_control_centers_on_control')
+        = render partial: 'remote_control_centers/remote_control_centers_table', locals: { remote_control_centers: remote_control_centers, incident: incident }
+
+
+      - infected_machines = incident.infected_machines
+
+      - if infected_machines.present?
+        .ui.header.center.aligned = t('infected_machines_on_control')
+        = render partial: 'infected_machines/infected_machines_table', locals: { infected_machines: infected_machines }
+  br

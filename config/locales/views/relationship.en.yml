@@ -1,0 +1,6 @@
+en:
+  relationships:
+    new:
+      new_relationship: "Add relationship"
+    edit:
+      edit_relationship: "Edit relationship"

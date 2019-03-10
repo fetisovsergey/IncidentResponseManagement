@@ -1,0 +1,24 @@
+= simple_form_for(@organisation, html: {class: 'ui form'}) do |f|
+
+  = render partial: 'shared/errors', locals: {object: @organisation, ff: f}
+
+  .field = f.input :name, placeholder: t('simple_form.placeholders.organisation.name')
+
+  .field = f.input :address, placeholder: t('simple_form.placeholders.organisation.address')
+
+  .field = f.input :region, as: :select, collection: Organisation::REGION_LIST, prompt: :translate, input_html: {class: 'ui selection dropdown'}
+
+  .field = f.input :contact_tech, placeholder: t('simple_form.placeholders.organisation.contact_tech')
+
+  .field = f.input :contact_security, placeholder: t('simple_form.placeholders.organisation.contact_security')
+
+  .field = f.input :ip, placeholder: t('simple_form.placeholders.organisation.ip')
+
+  .field = f.input :handler, placeholder: t('simple_form.placeholders.organisation.handler')
+
+  .field = f.input :description, placeholder: t('simple_form.placeholders.organisation.description'), input_html: { rows: 7, maxlength: 1000 }
+
+  .ui.segment.basic.right.aligned
+    .ui.buttons
+      = link_to t('back'), :back, class: 'ui button'
+      = f.button :submit, class: 'ui button'

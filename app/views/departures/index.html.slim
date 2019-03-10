@@ -1,0 +1,60 @@
+- if @departures.present?
+  .ui.header.huge.center.aligned = t('departures_on_control')
+
+  .ui.segment.padded.center.aligned
+    .ui.violet.statistic
+      .label = t('departures_count')
+
+      .value
+        i.icon.car
+        | &nbsp;
+        = @departures.total_count
+
+  table.ui.celled.table
+    thead
+      tr.center.aligned
+        th = sort_link(@q, :incident_id, Departure.human_attribute_name(:incident_id))
+        th.collapsing = sort_link(@q, :date_start, Departure.human_attribute_name(:date_start))
+        th.collapsing = sort_link(@q, :user_id, Departure.human_attribute_name(:user_id))
+        th.collapsing = t('activerecord.attributes.incident.user_id')
+        th.collapsing
+
+    tbody.center.aligned
+      - @departures.each do |departure|
+        tr
+          td
+            - incident = departure.incident
+
+            = link_to incident_path(incident), class: 'ui button basic' do
+              | № #{incident.identificator}/#{incident.source}
+              br
+              = incident.organisation.name
+
+          td
+            i.calendar.icon
+            = dt(departure.date_start)
+
+          td = link_to departure.user.short_name, departure.user, class: 'ui green label'
+
+          td = link_to departure.incident.user.short_name, departure.incident.user, class: 'ui blue label'
+
+          td
+            .ui.large.vertical.basic.icon.buttons
+              = link_to departure_path(departure), title: t('show'), class: 'ui button' do
+                i.icon.search
+
+              = link_to edit_departure_path(departure), title: t('edit'), class: 'ui button' do
+                i.icon.edit
+
+              - if (current_user == departure.user) || (current_user == departure.incident.user)
+                = link_to departure, data: { confirm: t('delete_departure') }, method: :delete, title: t('delete'), class: 'ui button' do
+                  i.icon.remove
+
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate @departures
+  br
+
+- else
+  .ui.header.huge.centered = t('no_departures')
+  br

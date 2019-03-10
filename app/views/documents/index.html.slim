@@ -1,0 +1,64 @@
+- if @documents.present?
+  .ui.header.huge.center.aligned = t('documents_on_control')
+
+  .ui.segment.padded.center.aligned
+    .ui.teal.statistic
+      .label = t('documents_count')
+
+      .value
+        i.icon.file.text.outline
+        | &nbsp;
+        = @documents.total_count
+
+  table.ui.celled.table
+    thead
+      tr.center.aligned
+        th.five.wide = sort_link(@q, :incident_id, Document.human_attribute_name(:incident_id))
+        th.collapsing = sort_link(@q, :number, Document.human_attribute_name(:number))
+        th.collapsing = sort_link(@q, :date_signature, Document.human_attribute_name(:date_signature))
+        th = sort_link(@q, :destination, Document.human_attribute_name(:destination))
+        th = sort_link(@q, :user_id, Document.human_attribute_name(:user_id))
+        th.collapsing
+
+    tbody.center.aligned
+      - @documents.each do |document|
+        tr
+          td
+            - incident = document.incident
+
+            = link_to incident_path(incident), class: 'ui button basic' do
+              | № #{incident.identificator}/#{incident.source}
+              br
+              = incident.organisation.name
+
+          td
+            | № #{document.number}
+
+          td
+            i.calendar.icon
+            = dt(document.date_signature)
+
+          td = document.destination
+
+          td = link_to document.user.short_name, document.user, class: 'ui blue label'
+
+          td
+            .ui.large.vertical.basic.icon.buttons
+              = link_to document_path(document), title: t('show'), class: 'ui button' do
+                i.icon.search
+
+              = link_to edit_document_path(document), title: t('edit'), class: 'ui button' do
+                i.icon.edit
+
+              - if current_user == document.user
+                = link_to document, data: { confirm: t('delete_document') }, method: :delete, title: t('delete'), class: 'ui button' do
+                  i.icon.remove
+
+    tfoot
+      tr.right.aligned
+        th colspan="8" = paginate @documents
+  br
+
+- else
+  .ui.header.huge.centered = t('no_documents')
+  br

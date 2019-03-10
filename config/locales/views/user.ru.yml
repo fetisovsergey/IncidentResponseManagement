@@ -1,0 +1,8 @@
+ru:
+  users:
+    show:
+      all_users: "Все пользователи"
+      edit_user:  "Редактировать профиль"
+      no_incidents: "Нет инцидентов"
+    edit:
+      edit_user: "Редактировать профиль "

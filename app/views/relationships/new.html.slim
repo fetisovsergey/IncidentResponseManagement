@@ -1,0 +1,11 @@
+= render partial: 'incidents/incidents_card_small', locals: { incident: @incident }
+
+- remote_control_centers = @incident.remote_control_centers
+
+- if remote_control_centers.present?
+  .ui.header.center.aligned = t('remote_control_centers_on_control')
+  = render partial: 'remote_control_centers/remote_control_centers_table', locals: { remote_control_centers: remote_control_centers, incident: @incident }
+
+h1 = t('.new_relationship')
+
+= render 'form'

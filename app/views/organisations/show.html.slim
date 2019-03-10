@@ -1,0 +1,77 @@
+.ui.card.fluid
+  .content
+    = link_to organisations_path, title: t('organisations_on_control'), class: 'ui button basic icon right floated' do
+      i.icon.building
+
+    .header = @organisation.name
+
+    - if @organisation.address.present?
+      .meta
+        i.icon.marker
+        = @organisation.address
+
+  .content
+    .ui.two.column.grid.stackable
+      - if @organisation.region.present?
+        .column
+          h4.ui.sub.header = t('activerecord.attributes.organisation.region')
+          .ui.description = @organisation.region
+
+      - if @organisation.handler.present?
+        .column
+          h4.ui.sub.header = t('activerecord.attributes.organisation.handler')
+          .ui.description = @organisation.handler
+
+      - if @organisation.contact_security.present?
+        .column
+          h4.ui.sub.header = t('activerecord.attributes.organisation.contact_security')
+          .ui.description = @organisation.contact_security
+
+      - if @organisation.contact_tech.present?
+        .column
+          h4.ui.sub.header = t('activerecord.attributes.organisation.contact_tech')
+          .ui.description = @organisation.contact_tech
+
+      - if @organisation.description.present?
+        .column
+          h4.ui.sub.header = t('activerecord.attributes.organisation.description')
+          .ui.description.justify = simple_format(@organisation.description)
+
+      - if @organisation.ip.present?
+        .column
+          h4.ui.sub.header = t('activerecord.attributes.organisation.ip')
+          .ui.description = simple_format(@organisation.ip)
+
+    br
+
+  .ui.big.basic.icon.buttons.fluid
+    = link_to edit_organisation_path(@organisation), title: t('edit'), class: 'ui button' do
+      i.icon.edit
+
+    = link_to @organisation, data: { confirm: t('.delete_organisation') }, method: :delete, title: t('delete'), class: 'ui button' do
+      i.icon.remove
+
+.ui.segment.padded.center.aligned
+
+  .ui.header.huge = t('statistic')
+  br
+  .ui.two.column.grid.stackable
+    .column
+      .ui.red.statistic
+        .label = t('active_incidents_count')
+        .value
+          i.icon.line.chart
+          | &nbsp;
+          = @active_incidents_count
+
+    .column
+      .ui.green.statistic
+        .label = t('closed_incidents_count')
+        .value
+          i.icon.line.chart
+          | &nbsp;
+          = @closed_incidents_count
+
+= render partial: 'incidents/incidents_table_adaptive', locals: { incidents: @incidents, title: 'incidents_on_control' } if @incidents.present?
+
+.ui.segment.basic.center.aligned = link_to t('new_incident'), new_incident_path(organisation_id: @organisation.id), class: 'ui big red button'

@@ -1,0 +1,26 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        email: "Login"
+        name: "Name"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        second_name: "Second name"
+        surname: "Surname"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              not_match: " doesn't match with password confirmation"
+  simple_form:
+    placeholders:
+      user:
+        email: "Enter login"
+        name: "Enter name"
+        password: "Enter password"
+        second_name: "Enter second name"
+        surname: "Enter surname"

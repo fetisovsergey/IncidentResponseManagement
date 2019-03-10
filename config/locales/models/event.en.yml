@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      event: "Event"
+    attributes:
+      event:
+        date_event: "Date of event"
+        description: "Description"
+    errors:
+      models:
+        event:
+          attributes:
+            date_event:
+              not_in_the_past: "couldn't be earlier than date of receiving materials"
+  simple_form:
+    placeholders:
+      event:
+        description: "Enter description of event"

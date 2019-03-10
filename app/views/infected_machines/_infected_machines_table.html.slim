@@ -1,0 +1,25 @@
+table.ui.celled.table
+  thead
+    tr.center.aligned
+      th.collapsing = t('activerecord.attributes.infected_machine.botnet_id')
+      th = t('activerecord.attributes.infected_machine.name')
+      th = t('activerecord.attributes.infected_machine.ip')
+      th.collapsing
+
+  tbody.center.aligned
+    - infected_machines.each do |infected_machine|
+      tr
+        td = link_to infected_machine.botnet.name, infected_machine.botnet, class: 'ui basic button', target: "#{(action_name == 'statistic') ? '_blank' : ''}"
+        td = infected_machine.name
+        td = infected_machine.ip
+
+        td
+          .ui.basic.icon.buttons
+            = link_to infected_machine_path(infected_machine), title: t('show'), class: 'ui button', target: "#{(action_name == 'statistic') ? '_blank' : ''}" do
+              i.icon.search
+
+            = link_to edit_infected_machine_path(infected_machine), title: t('edit'), class: 'ui button', target: "#{(action_name == 'statistic') ? '_blank' : ''}" do
+              i.icon.edit
+
+            = link_to infected_machine, data: { confirm: t('delete_infected_machine') }, method: :delete, title: t('delete'), class: 'ui button', target: "#{(action_name == 'statistic') ? '_blank' : ''}" do
+              i.icon.remove
